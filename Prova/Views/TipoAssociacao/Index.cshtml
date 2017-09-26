@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Prova.Models.TipoDeAssociacao>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (@Model.Any())
+{
+
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Periodo</th>
+                <th>Mensalidade</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var tipos in Model)
+            {
+
+                <tr>
+                    <td>@tipos.Id</td>
+                    <td>@Html.ActionLink(@tipos.Nome, "Details", new { tipos.Id })</td>
+                    <td>@tipos.Periodo</td>
+                    <td>@tipos.Mensalidade</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <br />
+    <p>We don't have any customers yet.</p>
+}

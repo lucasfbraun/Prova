@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Prova.Models.Aluno>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (@Model.Any())
+{
+
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome </th>
+                <th>Cpf</th>
+                <th>Faixa</th>
+                <th>Tipo de Associacao</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var tipos in Model)
+            {
+
+                <tr>
+                    <td>@tipos.Id</td>
+                    <td>@Html.ActionLink(@tipos.Name, "Details", new { tipos.Id })</td>
+                    <td>@tipos.Cpf</td>
+                    <td>@tipos.faixa</td>
+                    <td>@tipos.tipoAssociacao</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <br />
+    <p>We don't have any customers yet.</p>
+}
+
